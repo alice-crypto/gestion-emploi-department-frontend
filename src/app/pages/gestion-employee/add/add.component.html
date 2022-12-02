@@ -1,0 +1,43 @@
+<form [formGroup]="formEmployee" (ngSubmit)="submit()">
+    <div class="form-group">
+        <label for="Nom">Nom Employee</label>
+        <input [ngClass]="{'is-invalid':submitted && f['employeeLastname'].errors}" formControlName="employeeLastname" type="text" class="form-control">
+        <div *ngIf="f['employeeLastname'].errors" class="invalid-feedback">
+            <div *ngIf="f['employeeLastname'].errors['required']">
+                <i>le nom est obligatoire</i>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Prenom">Prénom</label>
+        <input [ngClass]="{'is-invalid':submitted && f['employeeFirstName'].errors}"  formControlName="employeeFirstName" type="text" class="form-control">
+        <div *ngIf="f['employeeFirstName'].errors" class="invalid-feedback">
+            <div *ngIf="f['employeeFirstName'].errors['required']">
+                <i>le prénom est obligatoire</i>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Phone">Numéro de téléphone</label>
+        <input [ngClass]="{'is-invalid':submitted && f['employeePhoneNumber'].errors}" formControlName="employeePhoneNumber" type="text" class="form-control">
+        <div *ngIf="f['employeePhoneNumber'].errors" class="invalid-feedback">
+            <div *ngIf="f['employeePhoneNumber'].errors['required']">
+                <i>le numéro de téléphone est obligatoire</i>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Department">Département</label>
+        <select [ngClass]="{'is-invalid':submitted && f['departmentId'].errors}" formControlName="departmentId" name="department" id="department" class="form-control">
+            <option *ngFor="let d of listDepartments" value="{{d.id}} ">{{d.departmentName}} </option>
+        </select>
+        <div *ngIf="f['departmentId'].errors" class="invalid-feedback">
+            <div *ngIf="f['departmentId'].errors['required']">
+                <i>le departement est obligatoire</i>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <Button class="btn btn-outline-success mt-3 btn-sm">Envoyer</Button>
+    </div>
+</form>
